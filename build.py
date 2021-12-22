@@ -1,16 +1,19 @@
 from jinja2 import Template
 
 # Get File Content in String
-jinja2_template_string = open("template.html", 'r').read()
-
-print(jinja2_template_string)
+template_string = open("template.html", 'r').read()
+index_content_string = open("index_content.html", 'r').read()
 
 # Create Template Object
-template = Template(jinja2_template_string)
+template = Template(template_string)
 
 # Render HTML Template String
-html_template_string = template.render(name = "John")
+context = dict(
+    content = index_content_string,
+    title = "Home"
+)
 
+html_template_string = template.render(**context)
 print(html_template_string)
 
 output = open('index.html', 'w')
