@@ -18,7 +18,7 @@ for filename in os.listdir(artwork_dir):
     if filename.endswith('.jpg'):
         artwork_files.append(filename)
 
-sorted(artwork_files)
+artwork_files.sort()
 
 artworks_html_string = ''
 for artwork_file in artwork_files:
