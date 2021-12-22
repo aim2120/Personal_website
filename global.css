@@ -68,6 +68,10 @@ a {
 }
 
 @media only screen and (max-device-width: 812px) {
+    body {
+        font-size: 150%;
+    }
+
     .artwork {
         width: 100%;
     }
