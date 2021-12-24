@@ -6,16 +6,16 @@
     <script>
         // make img elements the correct size dynamically so they hold the correct screen space while imgs loading
         document.addEventListener('DOMContentLoaded', function () {
-            //const artworks_container = document.getElementById('artworks');
-            //const artworks = document.getElementsByClassName('artwork');
+            const artworks_container = document.getElementById('artworks');
+            const artworks = document.getElementsByClassName('artwork');
 
-            //for (let i = 0; i < artworks.length; i++) {
-            //    artwork_img = artworks[i].getElementsByTagName('img')[0];
-            //    const original_width = artwork_img.width;
-            //    artwork_img.width = Math.floor(artworks_container.clientWidth * 0.45);
-            //    const multiplier = artwork_img.width / original_width;
-            //    artwork_img.height = Math.floor(artwork_img.height * multiplier);
-            //}
+            for (let i = 0; i < artworks.length; i++) {
+                artwork_img = artworks[i].getElementsByTagName('img')[0];
+                const original_width = artwork_img.width;
+                artwork_img.width = Math.floor(artworks_container.clientWidth * 0.45);
+                const multiplier = artwork_img.width / original_width;
+                artwork_img.height = Math.floor(artwork_img.height * multiplier);
+            }
         });
     </script>
 </head>
