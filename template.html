@@ -6,7 +6,7 @@
     <script>
         // make img elements the correct size dynamically so they hold the correct screen space while imgs loading
         document.addEventListener('DOMContentLoaded', function () {
-            const mq = window.matchMedia( "only screen and (max-device-width: 812px)" );
+            const mq = window.matchMedia( "(max-device-width: 812px)" );
 
             if (mq.matches) {
                 // image becomes skewed on mobile
