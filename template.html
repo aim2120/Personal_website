@@ -8,7 +8,13 @@
         document.addEventListener('DOMContentLoaded', function () {
             const mq = window.matchMedia( "only screen and (max-device-width: 812px)" );
 
-            const percentWidth = mq.matches ? 1.0 : 0.45;
+            if (mq.matches) {
+                // image becomes skewed on mobile
+                // TODO: find fix
+                return;
+            }
+
+            const percentWidth = 0.45;
             const artworks_container = document.getElementById('artworks');
             const artworks = document.getElementsByClassName('artwork');
 
