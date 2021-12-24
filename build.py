@@ -1,5 +1,6 @@
 import os
 from jinja2 import Template
+from PIL import Image
 
 # get templates and components from files
 template_string = open("template.html", 'r').read()
@@ -24,12 +25,17 @@ artwork_files.sort()
 # build the artworks html string
 artworks_html_string = ''
 for artwork_file in artwork_files:
+    artwork_image = Image.open(artwork_dir + '/' + artwork_file)
     artwork_info = artwork_file.split('.')[0].split('_')
     artwork_context = dict(
         filename = artwork_file,
         title = ' '.join(artwork_info[2].split('-')),
         dimensions = artwork_info[4],
-        year = artwork_info[5]
+        year = artwork_info[5],
+        file_size = {
+            'height': artwork_image.height,
+            'width': artwork_image.width
+        }
     )
     artworks_html_string += artwork_template.render(**artwork_context)
     artworks_html_string += '\n'
