@@ -7,15 +7,7 @@
         // make img elements the correct size dynamically so they hold the correct screen space while imgs loading
         document.addEventListener('DOMContentLoaded', function () {
             const mq = window.matchMedia( "(max-device-width: 812px)" );
-
-            if (mq.matches) {
-                // image becomes skewed on mobile
-                // TODO: find fix
-                alert('matches');
-                return;
-            }
-
-            const percentWidth = 0.45;
+            const percentWidth = mq.matches? 1.0 : 0.45;
             const artworks_container = document.getElementById('artworks');
             const artworks = document.getElementsByClassName('artwork');
 
