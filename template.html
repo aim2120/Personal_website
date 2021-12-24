@@ -11,6 +11,7 @@
             if (mq.matches) {
                 // image becomes skewed on mobile
                 // TODO: find fix
+                alert('matches');
                 return;
             }
 
@@ -19,7 +20,7 @@
             const artworks = document.getElementsByClassName('artwork');
 
             for (let i = 0; i < artworks.length; i++) {
-                artwork_img = artworks[i].getElementsByTagName('img')[0];
+                const artwork_img = artworks[i].getElementsByTagName('img')[0];
                 artwork_img.width = Math.floor(artworks_container.clientWidth * percentWidth);
 
                 const original_width = artwork_img.getAttribute('original-width');
