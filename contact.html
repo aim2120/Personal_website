@@ -6,14 +6,21 @@
     <script>
         // make img elements the correct size dynamically so they hold the correct screen space while imgs loading
         document.addEventListener('DOMContentLoaded', function () {
-            const mq = window.matchMedia( "only screen and (max-device-width: 812px)" );
+            const mq = window.matchMedia( "(max-device-width: 812px)" );
 
-            const percentWidth = mq.matches ? 1.0 : 0.45;
+            if (mq.matches) {
+                // image becomes skewed on mobile
+                // TODO: find fix
+                alert('matches');
+                return;
+            }
+
+            const percentWidth = 0.45;
             const artworks_container = document.getElementById('artworks');
             const artworks = document.getElementsByClassName('artwork');
 
             for (let i = 0; i < artworks.length; i++) {
-                artwork_img = artworks[i].getElementsByTagName('img')[0];
+                const artwork_img = artworks[i].getElementsByTagName('img')[0];
                 artwork_img.width = Math.floor(artworks_container.clientWidth * percentWidth);
 
                 const original_width = artwork_img.getAttribute('original-width');
