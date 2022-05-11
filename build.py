@@ -34,6 +34,7 @@ for artwork_file in artwork_files:
     artwork_context = dict(
         filename = artwork_file,
         title = ' '.join(artwork_info[2].split('-')),
+        medium = ' '.join(artwork_info[3].split('-')),
         dimensions = artwork_info[4],
         height = artwork_height,
         width = artwork_width,
