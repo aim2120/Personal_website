@@ -24,19 +24,30 @@ artwork_files.sort()
 
 # build the artworks html string
 artworks_html_string = ''
+artwork_contexts = []
 for artwork_file in artwork_files:
     artwork_image = Image.open(artwork_dir + '/' + artwork_file)
     artwork_info = artwork_file.split('.')[0].split('_')
+    artwork_dims = artwork_info[4].split('x')
+    artwork_height = artwork_dims[0].split('in')[0]
+    artwork_width = artwork_dims[1].split('in')[0]
     artwork_context = dict(
         filename = artwork_file,
         title = ' '.join(artwork_info[2].split('-')),
         dimensions = artwork_info[4],
+        height = artwork_height,
+        width = artwork_width,
         year = artwork_info[5],
         file_size = {
             'height': artwork_image.height,
             'width': artwork_image.width
         }
     )
+    artwork_contexts.append(artwork_context)
+
+artwork_contexts_sorted = sorted(artwork_contexts, key=lambda d: (d['year'], d['height'], d['width'], d['title']), reverse=True)
+
+for artwork_context in artwork_contexts_sorted:
     artworks_html_string += artwork_template.render(**artwork_context)
     artworks_html_string += '\n'
 
